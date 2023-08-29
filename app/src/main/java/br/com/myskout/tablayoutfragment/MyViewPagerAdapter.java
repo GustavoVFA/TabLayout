@@ -24,7 +24,6 @@ public class MyViewPagerAdapter extends FragmentStateAdapter {
             default:
                 return new HomeFragment();
         }
-
     }
 
     @Override
