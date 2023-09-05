@@ -18,8 +18,10 @@ public class MyViewPagerAdapter extends FragmentStateAdapter {
             case 0:
                 return new HomeFragment();
             case 1:
+                return new HomeFragmentCachorro();
+            case 3:
                 return new NotificationsFragment();
-            case 2:
+            case 4:
                 return new SettingsFragment();
             default:
                 return new HomeFragment();

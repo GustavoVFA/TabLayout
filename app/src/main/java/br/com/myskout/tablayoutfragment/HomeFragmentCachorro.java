@@ -1,9 +1,7 @@
 package br.com.myskout.tablayoutfragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,51 +10,56 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
 
-public class HomeFragment extends Fragment {
-    ListView lstGatos;
+
+public class HomeFragmentCachorro extends Fragment {
+    ListView lstCachorro;
 
     //Criar os dados
-    String nomeGato[] = {"Panqueca", "Soneca", "Juma", "Ramela"};
-    String descricaoGato[] = {
+
+    String nomeCachorro[] = {"Caramal", "Scooby", "pitbrabo", "Adriano"};
+
+    String descricaoCachorro[] = {
             "Quero ser adotado alguém ai se disponibiliza...",
             "Alguém gosta de gato, estou aqui...",
             "Gosto de humano, sou muito carinhoso...",
             "Estou disponível para ser adotado..."
 
     };
-    String numGato[] = {"5.0", "8.0", "9.0", "9.5"};
-    int imagemGato[] = {
-            R.drawable.gato, R.drawable.ciames,
-            R.drawable.rajado, R.drawable.preto_branco
+    String numCachorro[] = {"5.0", "8.0", "9.0", "9.5"};
+    int imagemCachorro[] = {
+            R.drawable.cachorro, R.drawable.caramelo,
+            R.drawable.pitbull, R.drawable.preto_branco
 
 
     };
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        lstGatos = view.findViewById(R.id.lstGatos);
+        lstCachorro = view.findViewById(R.id.lstCachorros);
 
         //Instanciando a classe adaptadora
-        AdapterGatos adapterGatos = new AdapterGatos();
+        AdapterCachorros adapterCachorros = new AdapterCachorros();
 
 
         //Carregar a lista com o adaptador
-        lstGatos.setAdapter(adapterGatos);
+        lstCachorro.setAdapter(adapterCachorros);
 
         return view;
     }
 
     //Criando a minha classe adaptadora ou inner class
-    public class AdapterGatos extends BaseAdapter {
+    public class AdapterCachorros extends BaseAdapter {
 
         @Override
         public int getCount() {
-            return imagemGato.length;
+            return imagemCachorro.length;
         }
 
         @Override
@@ -72,22 +75,22 @@ public class HomeFragment extends Fragment {
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             //Declarando as variáveis do modelo
-            TextView txtNomeGato, txtDescricaoGato, txtNumGato;
-            ImageView imgGato;
+            TextView txtNomeCachorro, txtDescricaoCachorro, txtNumCachorro;
+            ImageView imgCachorro;
 
             //Instanciar a janela do modelo no adapter
-            View v = getLayoutInflater().inflate(R.layout.modelo_gatos,null);
+            View v = getLayoutInflater().inflate(R.layout.modelo_cachorro,null);
 
-            txtNomeGato = v.findViewById(R.id.txtNomeGato);
-            txtDescricaoGato = v.findViewById(R.id.txtDescricaoGato);
-            txtNumGato = v.findViewById(R.id.txtNumGato);
-            imgGato = v.findViewById(R.id.imgModeloGato);
+            txtNomeCachorro = v.findViewById(R.id.txtNomeCachorro);
+            txtDescricaoCachorro = v.findViewById(R.id.txtDescricaoCachorro);
+            txtNumCachorro = v.findViewById(R.id.txtNumCachorro);
+            imgCachorro = v.findViewById(R.id.imgModeloCachorro);
 
             //Inserindo valores nos objetos do modelo
-            txtNomeGato.setText(nomeGato[i]);
-            txtDescricaoGato.setText(descricaoGato[i]);
-            txtNumGato.setText(numGato[i]);
-            imgGato.setImageResource(imagemGato[i]);
+            txtNomeCachorro.setText(nomeCachorro[i]);
+            txtDescricaoCachorro.setText(descricaoCachorro[i]);
+            txtNumCachorro.setText(numCachorro[i]);
+            imgCachorro.setImageResource(imagemCachorro[i]);
 
             return v;
         }
